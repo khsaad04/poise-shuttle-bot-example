@@ -2,13 +2,14 @@
 name = "cerebro"
 version = "0.1.0"
 edition = "2021"
-publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = "1.0.71"
-poise = "0.5.5"
-shuttle-poise = "0.35.2"
-shuttle-runtime = "0.35.2"
-shuttle-secrets = "0.35.2"
-tracing = "0.1.37"
-tokio = "1.28.2"
+anyhow = "1.0.79"
+poise = "0.6.1"
+shuttle-runtime = "0.41.0"
+shuttle-secrets = "0.41.0"
+shuttle-serenity = "0.41.0"
+tokio = "1.36.0"
+tracing = "0.1.40"
