@@ -28,8 +28,8 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        packages = [ pkgs.nil ];
-        nativeBuildInputs = with pkgs; [
+        packages = with pkgs; [
+          nil
           gdb
           rustPkg
           rust-analyzer-nightly
