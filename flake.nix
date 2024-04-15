@@ -1,38 +1,26 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     { nixpkgs
-    , fenix
     , ...
     }:
     let
       system = "x86_64-linux";
-      toolchain = "stable";
-      overlays = [ fenix.overlays.default ];
       pkgs = import nixpkgs {
-        inherit system overlays;
+        inherit system
+          ;
       };
-      rustPkg = pkgs.fenix."${toolchain}".withComponents [
-        "cargo"
-        "clippy"
-        "rust-src"
-        "rustc"
-        "rustfmt"
-      ];
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        packages = with pkgs; [
+        packages = with pkgs;[
           nil
-          gdb
-          rustPkg
-          rust-analyzer-nightly
+          cargo
+          rustc
+          rust-analyzer
+          rustfmt
         ];
       };
       formatter.${system} = pkgs.nixpkgs-fmt;
