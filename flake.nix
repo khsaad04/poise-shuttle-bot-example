@@ -3,9 +3,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
   outputs =
-    { nixpkgs
-    , ...
-    }:
+    { nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -20,6 +18,5 @@
           pkgs.rust-analyzer
         ];
       };
-      formatter.${system} = pkgs.nixpkgs-fmt;
     };
 }
