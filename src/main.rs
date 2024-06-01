@@ -3,7 +3,7 @@ mod utils;
 
 use anyhow::Context as _;
 use poise::serenity_prelude as serenity;
-use shuttle_secrets::SecretStore;
+use shuttle_runtime::SecretStore;
 use shuttle_serenity::ShuttleSerenity;
 
 use commands::{help::*, utils::*};
@@ -13,7 +13,7 @@ pub type Error = Box<dyn std::error::Error + Send + Sync>;
 pub type Context<'a> = poise::Context<'a, Data, Error>;
 
 #[shuttle_runtime::main]
-async fn poise(#[shuttle_secrets::Secrets] secret_store: SecretStore) -> ShuttleSerenity {
+async fn poise(#[shuttle_runtime::Secrets] secret_store: SecretStore) -> ShuttleSerenity {
     // Get the discord token set in `Secrets.toml`
     let discord_token = secret_store
         .get("DISCORD_TOKEN")
